@@ -1,29 +1,18 @@
-/*
-	Directive by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* Sidebar */
 
-(function($) {
+const sidebar = document.querySelector('#sidebar');
+const sidebarToggler = document.querySelector('.sidebar_toggler');
 
-	var	$window = $(window),
-		$body = $('body');
 
-	// Breakpoints.
-		breakpoints({
-			wide:      [ '1281px',  '1680px' ],
-			normal:    [ '981px',   '1280px' ],
-			narrow:    [ '841px',   '980px'  ],
-			narrower:  [ '737px',   '840px'  ],
-			mobile:    [ '481px',   '736px'  ],
-			mobilep:   [ null,      '480px'  ]
-		});
+// Toggling the Sidebar
+sidebarToggler.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+});
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
 
-})(jQuery);
+// Closing the Sidebar on clicking Outside and on the Sidebar-Links
+window.addEventListener((e) => {
+    if (e.target.id !== 'sidebar' && e.target.className !== 'sidebar_toggler') {
+        sidebar.classList.remove('show');
+    }
+});
